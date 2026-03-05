@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../component/Header/Header'
 import HeroSection from '../component/HeroSection'
-import Topbar from '../component/Header/Topbar'
+import ServicesSection from '../component/ServicesSection'
 
 const Home = () => {
   return (
@@ -9,6 +9,7 @@ const Home = () => {
         {/* <Topbar/> */}
         <Header/> 
         <HeroSection/>
+        <ServicesSection/>
     </>
   )
 }
