@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   FiMonitor,
   FiSmartphone,
@@ -13,7 +13,6 @@ import {
   FiHome,
   FiDollarSign,
   FiBook,
-  FiUserCheck,
   FiTarget,
   FiSettings,
   FiCreditCard,
@@ -23,43 +22,33 @@ import {
   FiCpu,
   FiChevronDown,
   FiMenu,
-  FiX
+  FiX,
+  FiArrowRight,
 } from "react-icons/fi";
 
 const Header = () => {
+  const location = useLocation();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
   const [solutionOpen, setSolutionOpen] = useState(false);
 
+  // Route change hone par dropdown close
+  useEffect(() => {
+    setServiceOpen(false);
+    setSolutionOpen(false);
+    setMenuOpen(false);
+  }, [location]);
+
   const services = [
     { name: "Website Development", icon: <FiMonitor />, path: "/services" },
-    {
-      name: "Mobile App Development",
-      icon: <FiSmartphone />,
-      path: "/services",
-    },
-    {
-      name: "Ecommerce Development",
-      icon: <FiShoppingCart />,
-      path: "/services",
-    },
-    {
-      name: "Custom Software Development",
-      icon: <FiCode />,
-      path: "/services",
-    },
+    { name: "Mobile App Development", icon: <FiSmartphone />, path: "/services" },
+    { name: "Ecommerce Development", icon: <FiShoppingCart />, path: "/services" },
+    { name: "Custom Software Development", icon: <FiCode />, path: "/services" },
     { name: "ERP & CRM Solutions", icon: <FiUsers />, path: "/services" },
-    {
-      name: "API Development & Integration",
-      icon: <FiLink />,
-      path: "/services",
-    },
+    { name: "API Development & Integration", icon: <FiLink />, path: "/services" },
     { name: "Maintenance and Support", icon: <FiTool />, path: "/services" },
-    {
-      name: "Software Development Outsourcing",
-      icon: <FiServer />,
-      path: "/services",
-    },
+    { name: "Software Development Outsourcing", icon: <FiServer />, path: "/services" },
     { name: "Desktop App Development", icon: <FiCpu />, path: "/services" },
   ];
 
@@ -71,12 +60,7 @@ const Header = () => {
     { name: "Warehouse Management", icon: <FiHome />, path: "/solutions" },
     { name: "HR Management", icon: <FiUsers />, path: "/solutions" },
     { name: "Finance Management", icon: <FiDollarSign />, path: "/solutions" },
-    {
-      name: "School Management Software",
-      icon: <FiBook />,
-      path: "/solutions",
-    },
-    { name: "Vendor Management", icon: <FiUserCheck />, path: "/solutions" },
+    { name: "School Management Software", icon: <FiBook />, path: "/solutions" },
     { name: "Lead Management", icon: <FiTarget />, path: "/solutions" },
     { name: "Operations Management", icon: <FiSettings />, path: "/solutions" },
     { name: "Kiosk Software", icon: <FiMonitor />, path: "/solutions" },
@@ -86,6 +70,7 @@ const Header = () => {
   return (
     <header className="w-full absolute top-0 left-0 z-50">
       <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 py-4">
+
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
@@ -98,52 +83,97 @@ const Header = () => {
 
         {/* Desktop Menu */}
         <nav className="hidden lg:flex items-center gap-8 text-gray-300">
+
           <Link to="/" className="hover:text-white transition">
             Home
           </Link>
 
-          {/* Services */}
-          <div className="relative group">
-            <button className="flex items-center gap-1 hover:text-white">
-              Services <FiChevronDown size={16} />
+          {/* SERVICES */}
+          <div className="relative">
+            <button
+              onClick={() => {
+                setServiceOpen(!serviceOpen);
+                setSolutionOpen(false);
+              }}
+              className="flex items-center gap-1 hover:text-white"
+            >
+              Services
+              <FiChevronDown
+                className={`transition-transform duration-300 ${
+                  serviceOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
 
-            <div className="absolute left-0 top-8 w-80 bg-white shadow-xl rounded-xl p-6 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition">
-              <div className="grid grid-cols-1 gap-4">
-                {services.map((item, index) => (
-                  <Link
-                    key={index}
-                    to={item.path}
-                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100"
-                  >
-                    <span className="text-blue-600 text-xl">{item.icon}</span>
-                    <span className="text-gray-700">{item.name}</span>
-                  </Link>
-                ))}
+            {serviceOpen && (
+              <div className="absolute left-0 top-10 w-[520px] bg-white shadow-xl rounded-xl p-6">
+                <div className="grid grid-cols-2 gap-3">
+
+                  {services.map((item, index) => (
+                    <Link
+                      key={index}
+                      to={item.path}
+                      className="group flex items-center justify-between p-2.5 rounded-lg hover:bg-gray-100 transition"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-blue-600 text-base">{item.icon}</span>
+
+                        <span className="text-[13px] leading-tight text-gray-700 font-medium">
+                          {item.name}
+                        </span>
+                      </div>
+
+                      <FiArrowRight className="opacity-0 group-hover:opacity-100 transition text-gray-500" />
+                    </Link>
+                  ))}
+
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
-          {/* Solutions */}
-          <div className="relative group">
-            <button className="flex items-center gap-1 hover:text-white">
-              Solutions <FiChevronDown size={16} />
+          {/* SOLUTIONS */}
+          <div className="relative">
+            <button
+              onClick={() => {
+                setSolutionOpen(!solutionOpen);
+                setServiceOpen(false);
+              }}
+              className="flex items-center gap-1 hover:text-white"
+            >
+              Solutions
+              <FiChevronDown
+                className={`transition-transform duration-300 ${
+                  solutionOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
 
-            <div className="absolute left-0 top-8 w-80 bg-white shadow-xl rounded-xl p-6 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition">
-              <div className="grid grid-cols-1 gap-4">
-                {solutions.map((item, index) => (
-                  <Link
-                    key={index}
-                    to={item.path}
-                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100"
-                  >
-                    <span className="text-purple-600 text-xl">{item.icon}</span>
-                    <span className="text-gray-700">{item.name}</span>
-                  </Link>
-                ))}
+            {solutionOpen && (
+              <div className="absolute left-0 top-10 w-[520px] bg-white shadow-xl rounded-xl p-6">
+                <div className="grid grid-cols-2 gap-3">
+
+                  {solutions.map((item, index) => (
+                    <Link
+                      key={index}
+                      to={item.path}
+                      className="group flex items-center justify-between p-2.5 rounded-lg hover:bg-gray-100 transition"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-purple-600 text-base">{item.icon}</span>
+
+                        <span className="text-[13px] leading-tight text-gray-700 font-medium">
+                          {item.name}
+                        </span>
+                      </div>
+
+                      <FiArrowRight className="opacity-0 group-hover:opacity-100 transition text-gray-500" />
+                    </Link>
+                  ))}
+
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <Link to="/industries" className="hover:text-white transition">
@@ -157,6 +187,7 @@ const Header = () => {
           <Link to="/contact" className="hover:text-white transition">
             Contact
           </Link>
+
         </nav>
 
         {/* CTA */}
@@ -166,18 +197,20 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile menu button */}
         <button
           className="lg:hidden text-white"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
         </button>
+
       </div>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       {menuOpen && (
         <div className="lg:hidden bg-slate-900 px-6 py-6 space-y-6">
+
           <Link to="/" className="block text-white">
             Home
           </Link>
@@ -188,7 +221,12 @@ const Header = () => {
               onClick={() => setServiceOpen(!serviceOpen)}
               className="flex justify-between w-full text-white"
             >
-              Services <FiChevronDown />
+              Services
+              <FiChevronDown
+                className={`transition-transform ${
+                  serviceOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
 
             {serviceOpen && (
@@ -197,9 +235,10 @@ const Header = () => {
                   <Link
                     key={index}
                     to={item.path}
-                    className="flex items-center gap-2 text-gray-300"
+                    className="flex items-center gap-2 text-gray-300 text-sm"
                   >
-                    {item.icon} {item.name}
+                    <span className="text-blue-400">{item.icon}</span>
+                    {item.name}
                   </Link>
                 ))}
               </div>
@@ -212,7 +251,12 @@ const Header = () => {
               onClick={() => setSolutionOpen(!solutionOpen)}
               className="flex justify-between w-full text-white"
             >
-              Solutions <FiChevronDown />
+              Solutions
+              <FiChevronDown
+                className={`transition-transform ${
+                  solutionOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
 
             {solutionOpen && (
@@ -221,9 +265,10 @@ const Header = () => {
                   <Link
                     key={index}
                     to={item.path}
-                    className="flex items-center gap-2 text-gray-300"
+                    className="flex items-center gap-2 text-gray-300 text-sm"
                   >
-                    {item.icon} {item.name}
+                    <span className="text-purple-400">{item.icon}</span>
+                    {item.name}
                   </Link>
                 ))}
               </div>
@@ -245,6 +290,7 @@ const Header = () => {
           <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg">
             Partner with us
           </button>
+
         </div>
       )}
     </header>
