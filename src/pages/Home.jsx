@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../component/Header/Header";
 import HeroSection from "../component/HeroSection";
 import ServicesSection from "../component/ServicesSection";
 import ProjectsSection from "../component/ProjectsSection";
