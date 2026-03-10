@@ -8,8 +8,6 @@ import LatestNewsSection from "../component/LatestNewsSection";
 import ClientsSection from "../component/ClientsSection";
 import WhyChooseUsSection from "../component/WhyChooseUsSection";
 import ContactSection from "../component/ContactSection";
-import Footer from "../component/Footer/Footer";
-import FloatingContact from "../component/FloatingContact";
 import OurSolution from "../component/OurSolution";
 
 const Home = () => {
