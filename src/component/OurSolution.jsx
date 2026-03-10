@@ -84,14 +84,6 @@ const OurSolution = () => {
       color: "from-cyan-500 to-blue-500",
     },
     {
-      id: 9,
-      title: "Vendor Management",
-      description:
-        "Manage vendor relationships, purchase orders and supplier performance easily.",
-      icon: <FiUserCheck size={28} />,
-      color: "from-purple-600 to-indigo-600",
-    },
-    {
       id: 10,
       title: "Lead Management",
       description:
