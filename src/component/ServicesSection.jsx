@@ -1,67 +1,92 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { 
-  FiMonitor, 
-  FiSmartphone, 
-  FiShoppingCart, 
-  FiCode, 
-  FiUsers, 
-  FiLink, 
-  FiZap 
+import {
+  FiMonitor,
+  FiSmartphone,
+  FiShoppingCart,
+  FiCode,
+  FiUsers,
+  FiLink,
+  FiTool,
+  FiServer,
+  FiCpu
 } from "react-icons/fi";
 
 const ServicesSection = () => {
   const services = [
-    {
-      id: 1,
-      title: "Website Development",
-      description: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <FiMonitor className="w-8 h-8" />,
-      color: "from-blue-500 to-blue-600"
-    },
-    {
-      id: 2,
-      title: "Mobile App Development",
-      description: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <FiSmartphone className="w-8 h-8" />,
-      color: "from-purple-500 to-purple-600"
-    },
-    {
-      id: 3,
-      title: "Ecommerce Development",
-      description: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <FiShoppingCart className="w-8 h-8" />,
-      color: "from-pink-500 to-pink-600"
-    },
-    {
-      id: 4,
-      title: "Custom Software Development",
-      description: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <FiCode className="w-8 h-8" />,
-      color: "from-blue-500 to-purple-500"
-    },
-    {
-      id: 5,
-      title: "CRM Solutions",
-      description: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <FiUsers className="w-8 h-8" />,
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      id: 6,
-      title: "API Development & Integration",
-      description: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <FiLink className="w-8 h-8" />,
-      color: "from-pink-500 to-orange-500"
-    },
-    {
-      id: 7,
-      title: "Business Automation",
-      description: "I throw myself down among the tall grass by the stream as I lie close to the earth.",
-      icon: <FiZap className="w-8 h-8" />,
-      color: "from-orange-500 to-red-500"
-    }
-  ];
+  {
+    id: 1,
+    title: "Website Development",
+    description:
+      "Modern, fast and responsive websites built with the latest technologies to help your business grow online.",
+    icon: <FiMonitor className="w-8 h-8" />,
+    color: "from-blue-500 to-blue-600",
+  },
+  {
+    id: 2,
+    title: "Mobile App Development",
+    description:
+      "High-performance Android and iOS mobile applications designed for seamless user experience and scalability.",
+    icon: <FiSmartphone className="w-8 h-8" />,
+    color: "from-purple-500 to-purple-600",
+  },
+  {
+    id: 3,
+    title: "Ecommerce Development",
+    description:
+      "Powerful ecommerce platforms with secure payments, product management and optimized shopping experience.",
+    icon: <FiShoppingCart className="w-8 h-8" />,
+    color: "from-pink-500 to-pink-600",
+  },
+  {
+    id: 4,
+    title: "Custom Software Development",
+    description:
+      "Tailor-made software solutions designed specifically to match your business processes and requirements.",
+    icon: <FiCode className="w-8 h-8" />,
+    color: "from-blue-500 to-purple-500",
+  },
+  {
+    id: 5,
+    title: "ERP & CRM Solutions",
+    description:
+      "Smart ERP and CRM systems to manage business operations, customers and data efficiently in one place.",
+    icon: <FiUsers className="w-8 h-8" />,
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    id: 6,
+    title: "API Development & Integration",
+    description:
+      "Secure and scalable API development and seamless integration with third-party services and applications.",
+    icon: <FiLink className="w-8 h-8" />,
+    color: "from-pink-500 to-orange-500",
+  },
+  {
+    id: 7,
+    title: "Maintenance and Support",
+    description:
+      "Reliable maintenance and technical support services to keep your applications updated and running smoothly.",
+    icon: <FiTool className="w-8 h-8" />,
+    color: "from-orange-500 to-red-500",
+  },
+  {
+    id: 8,
+    title: "Software Development Outsourcing",
+    description:
+      "Dedicated development teams to help businesses outsource projects with quality, speed and cost efficiency.",
+    icon: <FiServer className="w-8 h-8" />,
+    color: "from-indigo-500 to-purple-500",
+  },
+  {
+    id: 9,
+    title: "Desktop App Development",
+    description:
+      "Robust desktop applications for Windows and other platforms built with performance and reliability in mind.",
+    icon: <FiCpu className="w-8 h-8" />,
+    color: "from-green-500 to-teal-500",
+  },
+];
 
   const containerVariants = {
     hidden: { opacity: 0 },
