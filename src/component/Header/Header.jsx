@@ -41,36 +41,140 @@ const Header = () => {
   }, [location]);
 
   const services = [
-    { name: "Website Development", icon: <FiMonitor />, path: "/services" },
-    { name: "Mobile App Development", icon: <FiSmartphone />, path: "/services" },
-    { name: "Ecommerce Development", icon: <FiShoppingCart />, path: "/services" },
-    { name: "Custom Software Development", icon: <FiCode />, path: "/services" },
-    { name: "ERP & CRM Solutions", icon: <FiUsers />, path: "/services" },
-    { name: "API Development & Integration", icon: <FiLink />, path: "/services" },
-    { name: "Maintenance and Support", icon: <FiTool />, path: "/services" },
-    { name: "Software Development Outsourcing", icon: <FiServer />, path: "/services" },
-    { name: "Desktop App Development", icon: <FiCpu />, path: "/services" },
+    {
+      name: "Website Development",
+      icon: <FiMonitor />,
+      color: "from-blue-500 to-blue-600",
+      path: "/services",
+    },
+    {
+      name: "Mobile App Development",
+      icon: <FiSmartphone />,
+      color: "from-purple-500 to-purple-600",
+      path: "/services",
+    },
+    {
+      name: "Ecommerce Development",
+      icon: <FiShoppingCart />,
+      color: "from-pink-500 to-pink-600",
+      path: "/services",
+    },
+    {
+      name: "Custom Software Development",
+      icon: <FiCode />,
+      color: "from-blue-500 to-purple-500",
+      path: "/services",
+    },
+    {
+      name: "ERP & CRM Solutions",
+      icon: <FiUsers />,
+      color: "from-purple-500 to-pink-500",
+      path: "/services",
+    },
+    {
+      name: "API Development & Integration",
+      icon: <FiLink />,
+      color: "from-pink-500 to-orange-500",
+      path: "/services",
+    },
+    {
+      name: "Maintenance and Support",
+      icon: <FiTool />,
+      color: "from-orange-500 to-red-500",
+      path: "/services",
+    },
+    {
+      name: "Software Development Outsourcing",
+      icon: <FiServer />,
+      color: "from-indigo-500 to-purple-500",
+      path: "/services",
+    },
+    {
+      name: "Desktop App Development",
+      icon: <FiCpu />,
+      color: "from-green-500 to-teal-500",
+      path: "/services",
+    },
   ];
 
   const solutions = [
-    { name: "Accounting Software", icon: <FiPieChart />, path: "/solutions" },
-    { name: "Restaurant POS Software", icon: <FiCoffee />, path: "/solutions" },
-    { name: "Inventory Management", icon: <FiPackage />, path: "/solutions" },
-    { name: "Fleet Management", icon: <FiTruck />, path: "/solutions" },
-    { name: "Warehouse Management", icon: <FiHome />, path: "/solutions" },
-    { name: "HR Management", icon: <FiUsers />, path: "/solutions" },
-    { name: "Finance Management", icon: <FiDollarSign />, path: "/solutions" },
-    { name: "School Management Software", icon: <FiBook />, path: "/solutions" },
-    { name: "Lead Management", icon: <FiTarget />, path: "/solutions" },
-    { name: "Operations Management", icon: <FiSettings />, path: "/solutions" },
-    { name: "Kiosk Software", icon: <FiMonitor />, path: "/solutions" },
-    { name: "Payment Software", icon: <FiCreditCard />, path: "/solutions" },
+    {
+      name: "Accounting Software",
+      icon: <FiPieChart />,
+      color: "from-blue-500 to-indigo-600",
+      path: "/solutions",
+    },
+    {
+      name: "Restaurant POS Software",
+      icon: <FiCoffee />,
+      color: "from-orange-500 to-red-500",
+      path: "/solutions",
+    },
+    {
+      name: "Inventory Management",
+      icon: <FiPackage />,
+      color: "from-purple-500 to-pink-500",
+      path: "/solutions",
+    },
+    {
+      name: "Fleet Management",
+      icon: <FiTruck />,
+      color: "from-green-500 to-teal-500",
+      path: "/solutions",
+    },
+    {
+      name: "Warehouse Management",
+      icon: <FiHome />,
+      color: "from-indigo-500 to-purple-500",
+      path: "/solutions",
+    },
+    {
+      name: "HR Management",
+      icon: <FiUsers />,
+      color: "from-pink-500 to-rose-500",
+      path: "/solutions",
+    },
+    {
+      name: "Finance Management",
+      icon: <FiDollarSign />,
+      color: "from-yellow-500 to-orange-500",
+      path: "/solutions",
+    },
+    {
+      name: "School Management Software",
+      icon: <FiBook />,
+      color: "from-cyan-500 to-blue-500",
+      path: "/solutions",
+    },
+    {
+      name: "Lead Management",
+      icon: <FiTarget />,
+      color: "from-pink-500 to-red-500",
+      path: "/solutions",
+    },
+    {
+      name: "Operations Management",
+      icon: <FiSettings />,
+      color: "from-gray-600 to-gray-800",
+      path: "/solutions",
+    },
+    {
+      name: "Kiosk Software",
+      icon: <FiMonitor />,
+      color: "from-blue-500 to-purple-500",
+      path: "/solutions",
+    },
+    {
+      name: "Payment Software",
+      icon: <FiCreditCard />,
+      color: "from-green-500 to-emerald-600",
+      path: "/solutions",
+    },
   ];
 
   return (
     <header className="w-full absolute top-0 left-0 z-50">
       <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 py-4">
-
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
@@ -83,7 +187,6 @@ const Header = () => {
 
         {/* Desktop Menu */}
         <nav className="hidden lg:flex items-center gap-8 text-gray-300">
-
           <Link to="/" className="hover:text-white transition">
             Home
           </Link>
@@ -108,25 +211,29 @@ const Header = () => {
             {serviceOpen && (
               <div className="absolute left-0 top-10 w-[520px] bg-white shadow-xl rounded-xl p-6">
                 <div className="grid grid-cols-2 gap-3">
-
                   {services.map((item, index) => (
                     <Link
                       key={index}
                       to={item.path}
-                      className="group flex items-center justify-between p-2.5 rounded-lg hover:bg-gray-100 transition"
+                      className={`group flex items-center justify-between p-3 rounded-lg 
+                              bg-white hover:bg-gradient-to-r hover:${item.color} 
+                                transition-all duration-300`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-blue-600 text-base">{item.icon}</span>
+                        <div
+                          className={`w-9 h-9 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center text-white`}
+                        >
+                          {item.icon}
+                        </div>
 
                         <span className="text-[13px] leading-tight text-gray-700 font-medium">
                           {item.name}
                         </span>
                       </div>
 
-                      <FiArrowRight className="opacity-0 group-hover:opacity-100 transition text-gray-500" />
+                      <FiArrowRight className="opacity-0 group-hover:opacity-100 transition text-white" />
                     </Link>
                   ))}
-
                 </div>
               </div>
             )}
@@ -152,25 +259,29 @@ const Header = () => {
             {solutionOpen && (
               <div className="absolute left-0 top-10 w-[520px] bg-white shadow-xl rounded-xl p-6">
                 <div className="grid grid-cols-2 gap-3">
-
                   {solutions.map((item, index) => (
                     <Link
                       key={index}
                       to={item.path}
-                      className="group flex items-center justify-between p-2.5 rounded-lg hover:bg-gray-100 transition"
+                      className={`group flex items-center justify-between p-3 rounded-lg 
+                                bg-white hover:bg-gradient-to-r hover:${item.color} 
+                                  transition-all duration-300`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-purple-600 text-base">{item.icon}</span>
+                        <div
+                          className={`w-9 h-9 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center text-white`}
+                        >
+                          {item.icon}
+                        </div>
 
                         <span className="text-[13px] leading-tight text-gray-700 font-medium">
                           {item.name}
                         </span>
                       </div>
 
-                      <FiArrowRight className="opacity-0 group-hover:opacity-100 transition text-gray-500" />
+                      <FiArrowRight className="opacity-0 group-hover:opacity-100 transition text-white" />
                     </Link>
                   ))}
-
                 </div>
               </div>
             )}
@@ -187,7 +298,6 @@ const Header = () => {
           <Link to="/contact" className="hover:text-white transition">
             Contact
           </Link>
-
         </nav>
 
         {/* CTA */}
@@ -204,13 +314,11 @@ const Header = () => {
         >
           {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
         </button>
-
       </div>
 
       {/* MOBILE MENU */}
       {menuOpen && (
         <div className="lg:hidden bg-slate-900 px-6 py-6 space-y-6">
-
           <Link to="/" className="block text-white">
             Home
           </Link>
@@ -237,7 +345,11 @@ const Header = () => {
                     to={item.path}
                     className="flex items-center gap-2 text-gray-300 text-sm"
                   >
-                    <span className="text-blue-400">{item.icon}</span>
+                    <div
+                      className={`w-9 h-9 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center text-white`}
+                    >
+                      {item.icon}
+                    </div>
                     {item.name}
                   </Link>
                 ))}
@@ -267,7 +379,11 @@ const Header = () => {
                     to={item.path}
                     className="flex items-center gap-2 text-gray-300 text-sm"
                   >
-                    <span className="text-purple-400">{item.icon}</span>
+                    <div
+                      className={`w-9 h-9 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center text-white`}
+                    >
+                      {item.icon}
+                    </div>
                     {item.name}
                   </Link>
                 ))}
@@ -290,7 +406,6 @@ const Header = () => {
           <button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg">
             Partner with us
           </button>
-
         </div>
       )}
     </header>
