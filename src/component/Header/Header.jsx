@@ -10,9 +10,10 @@ const Header = () => {
     { name: "Services", path: "/services" },
     { name: "Solutions", path: "/solutions" },
     { name: "Industries", path: "/industries" },
-    { name: "Insights", path: "/insights" },
+    { name: "Portfolio", path: "/portfolio" },
     { name: "Contact", path: "/contact" },
   ];
+
 
   return (
     <header className="w-full absolute top-0 left-0 z-50">
@@ -54,7 +55,7 @@ const Header = () => {
         {/* CTA Button */}
         <div className="hidden lg:block">
           <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:scale-105 transition duration-300">
-            Get Started
+            Partner with us
           </button>
         </div>
 
