@@ -100,7 +100,7 @@ const Header = () => {
             ))}
 
             <button className="mt-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:scale-105 transition">
-              Get Started
+              Partner with us
             </button>
 
           </nav>
