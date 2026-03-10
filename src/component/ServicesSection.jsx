@@ -223,60 +223,7 @@ const ServicesSection = () => {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-8 border-t border-gray-200"
-        >
-          {[
-            { number: "150+", label: "Projects Delivered" },
-            { number: "98%", label: "Client Satisfaction" },
-            { number: "50+", label: "Expert Team" },
-            { number: "24/7", label: "Support" }
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.1 }}
-              className="text-center"
-            >
-              <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                {stat.number}
-              </div>
-              <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* View All Services Button */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="text-center mt-12"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden"
-          >
-            <span className="relative z-10 flex items-center space-x-2">
-              <span>Explore All Services</span>
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
-            <motion.div 
-              className="absolute inset-0 bg-white"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: "100%" }}
-              transition={{ duration: 0.5 }}
-              style={{ opacity: 0.2 }}
-            />
-          </motion.button>
-        </motion.div>
+        
       </div>
 
       {/* CSS for animations */}
