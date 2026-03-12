@@ -4,10 +4,10 @@ import ServicesSection from "../component/ServicesSection";
 import ProjectsSection from "../component/ProjectsSection";
 import AboutSection from "../component/AboutSection";
 import LatestNewsSection from "../component/LatestNewsSection";
-import ClientsSection from "../component/ClientsSection";
 import WhyChooseUsSection from "../component/WhyChooseUsSection";
 import ContactSection from "../component/ContactSection";
 import OurSolution from "../component/OurSolution";
+import Technologies from "../component/Technologies";
 
 const Home = () => {
   return (
@@ -19,7 +19,8 @@ const Home = () => {
       <ProjectsSection />
       <AboutSection />
       <LatestNewsSection />
-      <ClientsSection />
+      {/* <ClientsSection /> */}
+      <Technologies/>
       <WhyChooseUsSection />
       <ContactSection />
     </>
