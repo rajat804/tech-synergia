@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   FiMonitor,
@@ -29,16 +29,34 @@ import {
 const Header = () => {
   const location = useLocation();
 
+  const headerRef = useRef(null);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
   const [solutionOpen, setSolutionOpen] = useState(false);
 
-  // Route change hone par dropdown close
-  useEffect(() => {
+  const closeAllMenus = () => {
+    setMenuOpen(false);
     setServiceOpen(false);
     setSolutionOpen(false);
-    setMenuOpen(false);
+  };
+
+  useEffect(() => {
+    closeAllMenus();
   }, [location]);
+
+  // OUTSIDE CLICK CLOSE
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
+        closeAllMenus();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const services = [
     {
@@ -173,25 +191,29 @@ const Header = () => {
   ];
 
   return (
-    <header className="w-full absolute top-0 left-0 z-50">
+    <header ref={headerRef} className="w-full absolute top-0 left-0 z-50 bg-black">
       <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
+        {/* LOGO */}
+
         <Link to="/" className="flex items-center gap-2">
           <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
             TS
           </div>
+
           <h1 className="text-white text-xl font-bold">
             Tech<span className="text-blue-400">Synergia</span>
           </h1>
         </Link>
 
-        {/* Desktop Menu */}
+        {/* DESKTOP MENU */}
+
         <nav className="hidden lg:flex items-center gap-8 text-gray-300">
-          <Link to="/" className="hover:text-white transition">
+          <Link to="/" className="hover:text-white">
             Home
           </Link>
 
           {/* SERVICES */}
+
           <div className="relative">
             <button
               onClick={() => {
@@ -202,22 +224,19 @@ const Header = () => {
             >
               Services
               <FiChevronDown
-                className={`transition-transform duration-300 ${
-                  serviceOpen ? "rotate-180" : ""
-                }`}
+                className={`transition ${serviceOpen ? "rotate-180" : ""}`}
               />
             </button>
 
             {serviceOpen && (
-              <div className="absolute left-0 top-10 w-[520px] bg-white shadow-xl rounded-xl p-6">
+              <div className="absolute left-0 top-10 w-[520px] bg-white shadow-2xl rounded-xl p-6 animate-fadeIn">
                 <div className="grid grid-cols-2 gap-3">
                   {services.map((item, index) => (
                     <Link
                       key={index}
                       to={item.path}
-                      className={`group flex items-center justify-between p-3 rounded-lg 
-                              bg-white hover:bg-gradient-to-r hover:${item.color} 
-                                transition-all duration-300`}
+                      onClick={closeAllMenus}
+                      className="group flex items-center justify-between p-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-black transition-all duration-200 hover:shadow-sm"
                     >
                       <div className="flex items-center gap-3">
                         <div
@@ -226,12 +245,12 @@ const Header = () => {
                           {item.icon}
                         </div>
 
-                        <span className="text-[13px] leading-tight text-gray-700 font-medium">
+                        <span className="text-[13px] text-gray-700 ">
                           {item.name}
                         </span>
                       </div>
 
-                      <FiArrowRight className="opacity-0 group-hover:opacity-100 transition text-white" />
+                      <FiArrowRight className="opacity-0 group-hover:opacity-100 transition text-black" />
                     </Link>
                   ))}
                 </div>
@@ -240,6 +259,7 @@ const Header = () => {
           </div>
 
           {/* SOLUTIONS */}
+
           <div className="relative">
             <button
               onClick={() => {
@@ -250,22 +270,19 @@ const Header = () => {
             >
               Solutions
               <FiChevronDown
-                className={`transition-transform duration-300 ${
-                  solutionOpen ? "rotate-180" : ""
-                }`}
+                className={`transition ${solutionOpen ? "rotate-180" : ""}`}
               />
             </button>
 
             {solutionOpen && (
-              <div className="absolute left-0 top-10 w-[520px] bg-white shadow-xl rounded-xl p-6">
+              <div className="absolute left-0 top-10 w-[520px] bg-white shadow-2xl rounded-xl p-6">
                 <div className="grid grid-cols-2 gap-3">
                   {solutions.map((item, index) => (
                     <Link
                       key={index}
                       to={item.path}
-                      className={`group flex items-center justify-between p-3 rounded-lg 
-                                bg-white hover:bg-gradient-to-r hover:${item.color} 
-                                  transition-all duration-300`}
+                      onClick={closeAllMenus}
+                      className="group flex items-center justify-between p-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-black transition-all duration-200 hover:shadow-sm"
                     >
                       <div className="flex items-center gap-3">
                         <div
@@ -274,12 +291,12 @@ const Header = () => {
                           {item.icon}
                         </div>
 
-                        <span className="text-[13px] leading-tight text-gray-700 font-medium">
+                        <span className="text-[13px] text-gray-700">
                           {item.name}
                         </span>
                       </div>
 
-                      <FiArrowRight className="opacity-0 group-hover:opacity-100 transition text-white" />
+                      <FiArrowRight className="opacity-0 group-hover:opacity-100 text-black" />
                     </Link>
                   ))}
                 </div>
@@ -287,27 +304,20 @@ const Header = () => {
             )}
           </div>
 
-          <Link to="/industries" className="hover:text-white transition">
-            Industries
-          </Link>
-
-          <Link to="/portfolio" className="hover:text-white transition">
-            Portfolio
-          </Link>
-
-          <Link to="/contact" className="hover:text-white transition">
-            Contact
-          </Link>
+          <Link to="/industries">Industries</Link>
+          <Link to="/portfolio">Portfolio</Link>
+          <Link to="/about-us">About Us</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
 
         {/* CTA */}
-        <div className="hidden lg:block">
-          <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:scale-105 transition">
-            Partner with us
-          </button>
-        </div>
 
-        {/* Mobile menu button */}
+        <button className="hidden lg:block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:scale-105 transition">
+          Partner with us
+        </button>
+
+        {/* MOBILE MENU BUTTON */}
+
         <button
           className="lg:hidden text-white"
           onClick={() => setMenuOpen(!menuOpen)}
@@ -317,89 +327,81 @@ const Header = () => {
       </div>
 
       {/* MOBILE MENU */}
+
       {menuOpen && (
-        <div className="lg:hidden bg-slate-900 px-6 py-6 space-y-6">
-          <Link to="/" className="block text-white">
+        <div className="lg:hidden bg-slate-900 px-6 py-6 space-y-6 max-h-[80vh] overflow-y-auto">
+          <Link to="/" onClick={closeAllMenus} className="text-white block">
             Home
           </Link>
 
-          {/* Mobile Services */}
-          <div>
-            <button
-              onClick={() => setServiceOpen(!serviceOpen)}
-              className="flex justify-between w-full text-white"
-            >
-              Services
-              <FiChevronDown
-                className={`transition-transform ${
-                  serviceOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+          <button
+            onClick={() => setServiceOpen(!serviceOpen)}
+            className="flex justify-between w-full text-white"
+          >
+            Services
+            <FiChevronDown className={`${serviceOpen ? "rotate-180" : ""}`} />
+          </button>
 
-            {serviceOpen && (
-              <div className="mt-3 space-y-2">
-                {services.map((item, index) => (
-                  <Link
-                    key={index}
-                    to={item.path}
-                    className="flex items-center gap-2 text-gray-300 text-sm"
+          {serviceOpen && (
+            <div className="space-y-3">
+              {services.map((item, index) => (
+                <Link
+                  key={index}
+                  to={item.path}
+                  onClick={closeAllMenus}
+                  className="flex items-center gap-3 text-gray-300 text-sm"
+                >
+                  <div
+                    className={`w-8 h-8 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center text-white`}
                   >
-                    <div
-                      className={`w-9 h-9 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center text-white`}
-                    >
-                      {item.icon}
-                    </div>
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+                    {item.icon}
+                  </div>
 
-          {/* Mobile Solutions */}
-          <div>
-            <button
-              onClick={() => setSolutionOpen(!solutionOpen)}
-              className="flex justify-between w-full text-white"
-            >
-              Solutions
-              <FiChevronDown
-                className={`transition-transform ${
-                  solutionOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          )}
 
-            {solutionOpen && (
-              <div className="mt-3 space-y-2">
-                {solutions.map((item, index) => (
-                  <Link
-                    key={index}
-                    to={item.path}
-                    className="flex items-center gap-2 text-gray-300 text-sm"
+          <button
+            onClick={() => setSolutionOpen(!solutionOpen)}
+            className="flex justify-between w-full text-white"
+          >
+            Solutions
+            <FiChevronDown className={`${solutionOpen ? "rotate-180" : ""}`} />
+          </button>
+
+          {solutionOpen && (
+            <div className="space-y-3">
+              {solutions.map((item, index) => (
+                <Link
+                  key={index}
+                  to={item.path}
+                  onClick={closeAllMenus}
+                  className="flex items-center gap-3 text-gray-300 text-sm"
+                >
+                  <div
+                    className={`w-8 h-8 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center text-white`}
                   >
-                    <div
-                      className={`w-9 h-9 rounded-lg bg-gradient-to-r ${item.color} flex items-center justify-center text-white`}
-                    >
-                      {item.icon}
-                    </div>
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+                    {item.icon}
+                  </div>
 
-          <Link to="/industries" className="block text-white">
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          )}
+
+          <Link to="/industries" onClick={closeAllMenus} className="text-white block">
             Industries
-          </Link>
-
-          <Link to="/portfolio" className="block text-white">
+          </Link> 
+          <Link to="/portfolio" onClick={closeAllMenus} className="text-white block">
             Portfolio
           </Link>
-
-          <Link to="/contact" className="block text-white">
+          <Link to="/about-us" onClick={closeAllMenus} className="text-white block">
+            About Us
+          </Link>
+          <Link to="/contact" onClick={closeAllMenus} className="text-white block">
             Contact
           </Link>
 
