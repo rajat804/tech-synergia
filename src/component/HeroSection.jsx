@@ -1,41 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const HeroSection = () => {
+
   const [isSlideOpen, setIsSlideOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-  {
-    title: "DIGITAL SOLUTIONS",
-    description:
-      "Empowering businesses with modern digital solutions to enhance efficiency, performance, and customer experience.",
-    buttonText: "Explore Services",
-  },
-  {
-    title: "BUSINESS GROWTH",
-    description:
-      "Helping companies scale faster with innovative strategies, technology, and data-driven insights.",
-    buttonText: "View our Portfolio",
-  },
-  {
-    title: "TECHNOLOGY PARTNERSHIP",
-    description:
-      "Partner with us to build reliable, scalable, and future-ready technology solutions for your business.",
-    buttonText: "Start your Project",
-  },
-];
+    {
+      title: "DIGITAL SOLUTIONS",
+      description:
+        "Empowering businesses with modern digital solutions to enhance efficiency, performance, and customer experience.",
+      buttonText: "Explore Services",
+      buttonLink: "/services",
+    },
+    {
+      title: "BUSINESS GROWTH",
+      description:
+        "Helping companies scale faster with innovative strategies, technology, and data-driven insights.",
+      buttonText: "View our Portfolio",
+      buttonLink: "/portfolio",
+    },
+    {
+      title: "TECHNOLOGY PARTNERSHIP",
+      description:
+        "Partner with us to build reliable, scalable, and future-ready technology solutions for your business.",
+      buttonText: "Start your Project",
+      buttonLink: "/contact",
+    },
+  ];
 
-  // Auto slider
+  // Auto Slider
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 10000);
 
     return () => clearInterval(timer);
   }, []);
 
-  // Auto popup open
+  // Auto Popup
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsSlideOpen(true);
@@ -43,6 +49,16 @@ const HeroSection = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  // Next Slide
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  // Previous Slide
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   return (
     <div className="relative h-[75vh] sm:h-[80vh] md:min-h-screen flex items-center justify-center bg-slate-900 overflow-hidden">
@@ -58,6 +74,22 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black/70"></div>
       </div>
 
+      {/* LEFT ARROW */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white p-3 rounded-full transition"
+      >
+        <FiChevronLeft size={28} />
+      </button>
+
+      {/* RIGHT ARROW */}
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white p-3 rounded-full transition"
+      >
+        <FiChevronRight size={28} />
+      </button>
+
       {/* Hero Content */}
       <div className="relative z-10 text-center px-6">
 
@@ -69,6 +101,7 @@ const HeroSection = () => {
             exit={{ opacity: 0, y: -40 }}
             transition={{ duration: 0.6 }}
           >
+
             <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-6">
               {slides[currentSlide].title}
             </h1>
@@ -77,16 +110,21 @@ const HeroSection = () => {
               {slides[currentSlide].description}
             </p>
 
-            {/* <button
-              onClick={() => setIsSlideOpen(true)}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 md:px-8 py-3 rounded-full font-semibold hover:scale-105 transition"
-            >
-              Discover Synergy
-            </button> */}
+            {/* Slide Button */}
+            {/* <Link to={slides[currentSlide].buttonLink}>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition"
+              >
+                {slides[currentSlide].buttonText}
+              </motion.button>
+            </Link> */}
+
           </motion.div>
         </AnimatePresence>
 
-        {/* Slide Indicators */}
+        {/* Indicators */}
         <div className="flex justify-center gap-3 mt-10">
           {slides.map((_, index) => (
             <div
@@ -94,16 +132,16 @@ const HeroSection = () => {
               className={`h-2 w-6 md:w-8 rounded-full ${
                 currentSlide === index ? "bg-white" : "bg-gray-500"
               }`}
-            ></div>
+            />
           ))}
         </div>
+
       </div>
 
       {/* Popup Modal */}
       <AnimatePresence>
         {isSlideOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
               initial={{ opacity: 0 }}
@@ -112,7 +150,6 @@ const HeroSection = () => {
               onClick={() => setIsSlideOpen(false)}
             />
 
-            {/* Center Modal */}
             <motion.div
               className="fixed inset-0 flex items-center justify-center z-50 px-4"
               initial={{ opacity: 0, scale: 0.8, y: 40 }}
@@ -120,9 +157,9 @@ const HeroSection = () => {
               exit={{ opacity: 0, scale: 0.8, y: 40 }}
               transition={{ type: "spring", damping: 20 }}
             >
+
               <div className="w-full max-w-md bg-slate-800/95 backdrop-blur-xl shadow-2xl p-8 border border-slate-700 rounded-2xl relative">
 
-                {/* Close Button */}
                 <button
                   onClick={() => setIsSlideOpen(false)}
                   className="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"
@@ -140,7 +177,6 @@ const HeroSection = () => {
 
                 {/* Form */}
                 <form className="space-y-4">
-
                   <input
                     type="text"
                     placeholder="Your Name"
@@ -178,8 +214,8 @@ const HeroSection = () => {
                   >
                     Send Message
                   </button>
-
                 </form>
+
               </div>
             </motion.div>
           </>
