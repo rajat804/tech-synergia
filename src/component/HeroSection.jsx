@@ -6,22 +6,25 @@ const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
-    {
-      title: "INNOVATION",
-      description:
-        "Pioneering the future with cutting-edge technology solutions that transform businesses.",
-    },
-    {
-      title: "SYNERGY",
-      description:
-        "Where collaboration meets technology to create unprecedented value for our clients.",
-    },
-    {
-      title: "GROWTH",
-      description:
-        "Accelerate your business growth with our integrated digital strategies.",
-    },
-  ];
+  {
+    title: "DIGITAL SOLUTIONS",
+    description:
+      "Empowering businesses with modern digital solutions to enhance efficiency, performance, and customer experience.",
+    buttonText: "Explore Services",
+  },
+  {
+    title: "BUSINESS GROWTH",
+    description:
+      "Helping companies scale faster with innovative strategies, technology, and data-driven insights.",
+    buttonText: "View our Portfolio",
+  },
+  {
+    title: "TECHNOLOGY PARTNERSHIP",
+    description:
+      "Partner with us to build reliable, scalable, and future-ready technology solutions for your business.",
+    buttonText: "Start your Project",
+  },
+];
 
   // Auto slider
   useEffect(() => {
@@ -74,12 +77,12 @@ const HeroSection = () => {
               {slides[currentSlide].description}
             </p>
 
-            <button
+            {/* <button
               onClick={() => setIsSlideOpen(true)}
               className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 md:px-8 py-3 rounded-full font-semibold hover:scale-105 transition"
             >
               Discover Synergy
-            </button>
+            </button> */}
           </motion.div>
         </AnimatePresence>
 
@@ -152,10 +155,15 @@ const HeroSection = () => {
 
                   <select className="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-3 text-white">
                     <option>Select Service</option>
-                    <option>Web Development</option>
-                    <option>App Development</option>
-                    <option>SEO</option>
-                    <option>Cloud Solutions</option>
+                    <option>Website Development</option>
+                    <option>Mobile App Development</option>
+                    <option>Ecommerce Developer</option>
+                    <option>Custom Software Developer </option>
+                    <option>ERP & CRM Solutions</option>
+                    <option>API Development & Integration</option>
+                    <option>Maintenance and Support</option>
+                    <option>Software Development Outsourcing</option>
+                    <option>Destop App Development </option>
                   </select>
 
                   <textarea
