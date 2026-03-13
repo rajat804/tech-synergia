@@ -63,13 +63,13 @@ const Header = () => {
       name: "Website Development",
       icon: <FiMonitor />,
       color: "from-blue-500 to-blue-600",
-      path: "/services",
+      path: "/website-development",
     },
     {
       name: "Mobile App Development",
       icon: <FiSmartphone />,
       color: "from-purple-500 to-purple-600",
-      path: "/services",
+      path: "/mobile-app-development",
     },
     {
       name: "Ecommerce Development",
