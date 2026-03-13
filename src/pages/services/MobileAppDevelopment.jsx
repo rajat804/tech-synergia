@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import {
   FiSmartphone,
   FiCode,
@@ -36,18 +36,12 @@ import {
 
 import { SiFlutter, SiKotlin, SiSwift, SiIonic } from "react-icons/si";
 import ContactWithUs from "../../component/services/ContactWithUs";
+import ProcessSection from "../../component/services/ProcessSection";
+import ClientTestimonials from "../../component/services/ClientTestimonials";
 
 const MobileAppDevelopment = () => {
   const [activeTab, setActiveTab] = useState("all");
-  const [currentSlide, setCurrentSlide] = useState(0);
 
-  // Auto-slide for testimonials
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
 
   const stats = [
     {
@@ -292,89 +286,6 @@ const MobileAppDevelopment = () => {
     },
   ];
 
-  const process = [
-    {
-      step: "01",
-      title: "Discovery",
-      desc: "Understanding your app idea, target audience, and market research",
-      color: "from-blue-500 to-blue-600",
-      icon: "🔍",
-    },
-    {
-      step: "02",
-      title: "UX/UI Design",
-      desc: "Creating wireframes, prototypes, and beautiful user interfaces",
-      color: "from-purple-500 to-purple-600",
-      icon: "🎨",
-    },
-    {
-      step: "03",
-      title: "Development",
-      desc: "Building your app with clean code and modern architecture",
-      color: "from-pink-500 to-pink-600",
-      icon: "💻",
-    },
-    {
-      step: "04",
-      title: "Testing",
-      desc: "Rigorous QA testing across multiple devices and platforms",
-      color: "from-orange-500 to-orange-600",
-      icon: "✅",
-    },
-    {
-      step: "05",
-      title: "Deployment",
-      desc: "App Store and Play Store submission with ASO optimization",
-      color: "from-green-500 to-green-600",
-      icon: "🚀",
-    },
-    {
-      step: "06",
-      title: "Maintenance",
-      desc: "Ongoing support, updates, and performance monitoring",
-      color: "from-indigo-500 to-indigo-600",
-      icon: "🔧",
-    },
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "CEO, FoodieApp",
-      content:
-        "Tech Synergia delivered an amazing food delivery app that exceeded our expectations. Downloads crossed 100K in just 3 months!",
-      avatar: "https://randomuser.me/api/portraits/women/1.jpg",
-      rating: 5,
-      company: "FoodieApp",
-    },
-    {
-      name: "Michael Chen",
-      role: "Founder, FitTrack",
-      content:
-        "The fitness app they built is incredibly smooth and user-friendly. Our users love the UI and the real-time tracking features.",
-      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
-      rating: 5,
-      company: "FitTrack",
-    },
-    {
-      name: "Emily Davis",
-      role: "Product Manager, MediCare",
-      content:
-        "They developed a HIPAA compliant healthcare app for us. The security features and patient portal are top-notch.",
-      avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-      rating: 5,
-      company: "MediCare",
-    },
-    {
-      name: "David Wilson",
-      role: "CTO, ShopEase",
-      content:
-        "Our e-commerce app built by Tech Synergia has a 4.8 rating on Play Store. The performance is outstanding!",
-      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-      rating: 5,
-      company: "ShopEase",
-    },
-  ];
 
   const features = [
     {
@@ -864,134 +775,10 @@ const MobileAppDevelopment = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Our App Development Process
-              </span>
-            </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              A proven methodology to deliver high-quality apps on time
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {process.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="relative bg-white rounded-xl p-4 sm:p-5 shadow-lg text-center group border border-gray-100"
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-0 group-hover:opacity-5 rounded-xl transition-opacity duration-300`}
-                />
-                <div className="text-2xl sm:text-3xl mb-2">{item.icon}</div>
-                <div
-                  className={`text-xl sm:text-2xl font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-2`}
-                >
-                  {item.step}
-                </div>
-                <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-xs sm:text-sm">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProcessSection/>
 
       {/* Success Stories */}
-      <section className="py-16 bg-gradient-to-br from-indigo-50 to-purple-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Client Success Stories
-              </span>
-            </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              What our clients say about working with us
-            </p>
-          </motion.div>
-
-          <div className="relative">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-100"
-              >
-                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-                  <img
-                    src={testimonials[currentSlide].avatar}
-                    alt={testimonials[currentSlide].name}
-                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-white shadow-lg"
-                  />
-                  <div className="flex-1 text-center sm:text-left">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-800">
-                      {testimonials[currentSlide].name}
-                    </h3>
-                    <p className="text-sm sm:text-base text-purple-600 mb-2">
-                      {testimonials[currentSlide].role}
-                    </p>
-                    <div className="flex justify-center sm:justify-start items-center gap-2 mb-3">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <FiStar
-                            key={i}
-                            className="w-4 h-4 text-yellow-400 fill-current"
-                          />
-                        ))}
-                      </div>
-                      <span className="text-xs sm:text-sm text-gray-500">
-                        {testimonials[currentSlide].company}
-                      </span>
-                    </div>
-                    <p className="text-sm sm:text-base text-gray-600 italic">
-                      "{testimonials[currentSlide].content}"
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Dots Indicator */}
-            <div className="flex justify-center space-x-2 mt-6">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide
-                      ? "w-6 bg-gradient-to-r from-indigo-500 to-purple-500"
-                      : "bg-gray-300 hover:bg-gray-400"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ClientTestimonials/>
 
       {/* contact with us */}
       <ContactWithUs />
