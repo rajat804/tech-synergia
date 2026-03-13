@@ -5,7 +5,8 @@ import Header from "../component/Header/Header";
 import Footer from "../component/Footer/Footer";
 import FloatingContact from "../component/FloatingContact";
 import AboutUs from "../pages/AboutUs";
-import WebsiteDevelopment from "../pages/WebsiteDevelopment";
+import WebsiteDevelopment from "../pages/services/WebsiteDevelopment";
+import MobileAppDevelopment from "../pages/services/MobileAppDevelopment";
 
 const AppRoutes = () => {
   return (
@@ -13,8 +14,17 @@ const AppRoutes = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about-us" element={<AboutUs/>} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/website-development" element={<WebsiteDevelopment />} />
+        <Route path="/mobile-app-development" element={<MobileAppDevelopment />} />
+        {/* <Route path="/ecommerce-development" element={< />} />
+        <Route path="/custom-software-development" element={< />} />
+        <Route path="/erp-crm-solution" element={< />} />
+        <Route path="/api-development" element={< />} />
+        <Route path="/maintenance" element={< />} />
+        <Route path="/software-development" element={< />} />
+        <Route path="/destop-app-development" element={< />} />
+         */}
       </Routes>
       <Footer />
       <FloatingContact />
