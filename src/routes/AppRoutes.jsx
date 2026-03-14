@@ -10,6 +10,7 @@ import MobileAppDevelopment from "../pages/services/MobileAppDevelopment";
 import EcommerceDevelopment from "../pages/services/EcommerceDevelopment";
 import CustomSoftwareDevelopment from "../pages/services/CustomSoftwareDevelopment";
 import ErpCrmSolutions from "../pages/services/ErpCrmSolutions";
+import ApiDevelopmentIntegration from "../pages/services/ApiDevelopmentIntegration";
 
 const AppRoutes = () => {
   return (
@@ -31,9 +32,12 @@ const AppRoutes = () => {
           path="/custom-software-development"
           element={<CustomSoftwareDevelopment />}
         />
-        {/* <Route path="/erp-crm-solution" element={<ErpCrmSolutions />} /> */}
-       {/* <Route path="/api-development" element={< />} />
-       <Route path="/maintenance" element={< />} />
+        <Route path="/erp-crm-solution" element={<ErpCrmSolutions />} />
+        <Route
+          path="/api-development"
+          element={<ApiDevelopmentIntegration />}
+        />
+        {/* <Route path="/maintenance" element={< />} />
       <Route path="/software-development" element={< />} />
       <Route path="/destop-app-development" element={< />} /> */}
       </Routes>
