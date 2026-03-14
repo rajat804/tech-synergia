@@ -31,7 +31,7 @@ const AppRoutes = () => {
           path="/custom-software-development"
           element={<CustomSoftwareDevelopment />}
         />
-        <Route path="/erp-crm-solution" element={<ErpCrmSolutions />} />
+        {/* <Route path="/erp-crm-solution" element={<ErpCrmSolutions />} /> */}
        {/* <Route path="/api-development" element={< />} />
        <Route path="/maintenance" element={< />} />
       <Route path="/software-development" element={< />} />
