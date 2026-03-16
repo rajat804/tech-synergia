@@ -11,6 +11,9 @@ import EcommerceDevelopment from "../pages/services/EcommerceDevelopment";
 import CustomSoftwareDevelopment from "../pages/services/CustomSoftwareDevelopment";
 import ErpCrmSolutions from "../pages/services/ErpCrmSolutions";
 import ApiDevelopmentIntegration from "../pages/services/ApiDevelopmentIntegration";
+import MaintenanceAndSupport from "../pages/services/MaintenanceAndSupport";
+import SoftwareDevelopmentOutsourcing from "../pages/services/SoftwareDevelopmentOutsourcing";
+import DesktopAppDevelopment from "../pages/services/DesktopAppDevelopment";
 
 const AppRoutes = () => {
   return (
@@ -37,9 +40,15 @@ const AppRoutes = () => {
           path="/api-development"
           element={<ApiDevelopmentIntegration />}
         />
-        {/* <Route path="/maintenance" element={< />} />
-      <Route path="/software-development" element={< />} />
-      <Route path="/destop-app-development" element={< />} /> */}
+        <Route path="/maintenance" element={<MaintenanceAndSupport />} />
+        <Route
+          path="/software-development"
+          element={<SoftwareDevelopmentOutsourcing />}
+        />
+        <Route
+          path="/destop-app-development"
+          element={<DesktopAppDevelopment />}
+        />
       </Routes>
       <Footer />
       <FloatingContact />
