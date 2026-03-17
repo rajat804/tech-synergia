@@ -8,6 +8,7 @@ import WhyChooseUsSection from "../component/WhyChooseUsSection";
 import ContactSection from "../component/ContactSection";
 import OurSolution from "../component/OurSolution";
 import Technologies from "../component/Technologies";
+import ProcessSection from "../component/services/ProcessSection";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <HeroSection />
       <ServicesSection />
       <OurSolution />
+      <ProcessSection/>
       <ProjectsSection />
       <AboutSection />
       <LatestNewsSection />
