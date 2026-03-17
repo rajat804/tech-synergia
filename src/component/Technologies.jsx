@@ -38,8 +38,6 @@ import {
   FiStar,
   FiArrowLeft,
   FiArrowRight,
-  FiCheckCircle,
-  FiAward,
 } from "react-icons/fi";
 
 const Technologies = () => {
@@ -92,6 +90,9 @@ const Technologies = () => {
   ];
 
   const technologies = [
+    // ────────────────────────────────────────────────────────────────────────────────
+    // Your original technologies array (unchanged)
+    // ────────────────────────────────────────────────────────────────────────────────
     {
       id: 1,
       name: "React",
@@ -420,6 +421,7 @@ const Technologies = () => {
   ];
 
   const featuredTechnologies = technologies.slice(0, 8);
+
   const stats = [
     {
       number: "24+",
@@ -453,21 +455,16 @@ const Technologies = () => {
       : technologies.filter((tech) => tech.category === activeCategory);
 
   const scrollLeft = () => {
-    scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    scrollRef.current?.scrollBy({ left: -300, behavior: "smooth" });
   };
 
   const scrollRight = () => {
-    scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    scrollRef.current?.scrollBy({ left: 300, behavior: "smooth" });
   };
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
   };
 
   const itemVariants = {
@@ -475,11 +472,7 @@ const Technologies = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12,
-      },
+      transition: { type: "spring", stiffness: 100, damping: 12 },
     },
   };
 
@@ -525,7 +518,7 @@ const Technologies = () => {
           </motion.p>
         </motion.div>
 
-        {/* Stats with Hover Effects */}
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -542,11 +535,9 @@ const Technologies = () => {
               }}
               className="group relative bg-white rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
             >
-              {/* Animated gradient background on hover */}
               <motion.div
                 className={`absolute inset-0 bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300`}
               />
-
               <div
                 className={`text-4xl mb-3 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
               >
@@ -558,8 +549,6 @@ const Technologies = () => {
                 {stat.number}
               </div>
               <div className="text-sm text-gray-500 mt-1">{stat.label}</div>
-
-              {/* Bottom gradient line */}
               <motion.div
                 className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${stat.color} scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
               />
@@ -578,9 +567,9 @@ const Technologies = () => {
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Featured Technologies
             </h3>
-
             <div className="flex gap-2">
               <motion.button
+                type="button"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={scrollLeft}
@@ -588,8 +577,8 @@ const Technologies = () => {
               >
                 <FiArrowLeft className="w-5 h-5 text-gray-600" />
               </motion.button>
-
               <motion.button
+                type="button"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={scrollRight}
@@ -613,11 +602,9 @@ const Technologies = () => {
                   whileHover={{ y: -5, scale: 1.02 }}
                   className={`min-w-[220px] bg-white p-5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 ${tech.borderColor} relative group`}
                 >
-                  {/* Background pattern */}
                   <div
                     className={`absolute inset-0 ${tech.bgColor} opacity-0 group-hover:opacity-30 rounded-xl transition-opacity duration-300`}
                   />
-
                   <div className={`text-4xl mb-3 ${tech.textColor}`}>
                     {tech.icon}
                   </div>
@@ -625,8 +612,6 @@ const Technologies = () => {
                   <p className="text-xs text-gray-500 mt-1">
                     {tech.description.substring(0, 30)}...
                   </p>
-
-                  {/* Category badge */}
                   <div className="absolute top-2 right-2">
                     <span
                       className={`text-xs px-2 py-1 rounded-full bg-gradient-to-r ${category?.color} text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
@@ -640,8 +625,9 @@ const Technologies = () => {
           </div>
         </motion.div>
 
-        {/* Category Filter */}
+        {/* Category Filter Buttons – FIXED with type="button" */}
         <motion.div
+        layout
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
@@ -650,9 +636,17 @@ const Technologies = () => {
           {categories.map((category) => (
             <motion.button
               key={category.id}
+              type="button"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setActiveCategory(category.id)}
+              onClick={() => {
+                const scrollY = window.scrollY; // ✅ save scroll
+                setActiveCategory(category.id);
+
+                requestAnimationFrame(() => {
+                  window.scrollTo({ top: scrollY }); // ✅ restore scroll
+                });
+              }}
               className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
                 activeCategory === category.id
                   ? `bg-gradient-to-r ${category.color} text-white shadow-lg`
@@ -667,7 +661,6 @@ const Technologies = () => {
 
         {/* Technologies Grid */}
         <motion.div
-          key={activeCategory}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -688,33 +681,24 @@ const Technologies = () => {
                 onHoverEnd={() => setHoveredTech(null)}
                 className="group relative bg-white rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden"
               >
-                {/* Animated gradient background */}
                 <motion.div
                   className={`absolute inset-0 bg-gradient-to-br ${tech.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
                 />
-
-                {/* Icon with animation */}
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   className={`text-5xl mb-4 ${tech.textColor} group-hover:scale-110 transition-transform duration-300`}
                 >
                   {tech.icon}
                 </motion.div>
-
-                {/* Title */}
                 <h3 className="font-bold text-lg text-gray-800 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
                   {tech.name}
                 </h3>
-
-                {/* Category */}
                 <p className="text-sm text-gray-500 capitalize flex items-center gap-1 mb-3">
                   <span
                     className={`w-2 h-2 rounded-full bg-gradient-to-r ${category?.color}`}
                   ></span>
                   {tech.category}
                 </p>
-
-                {/* Proficiency Bar (appears on hover) */}
                 <AnimatePresence>
                   {hoveredTech === tech.id && (
                     <motion.div
@@ -746,13 +730,9 @@ const Technologies = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-
-                {/* Bottom gradient line */}
                 <motion.div
                   className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${tech.color} scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
                 />
-
-                {/* Decorative corner */}
                 <motion.div
                   className={`absolute -top-2 -right-2 w-12 h-12 bg-gradient-to-br ${tech.color} rounded-full opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`}
                 />
@@ -773,7 +753,6 @@ const Technologies = () => {
               Technology Stack Distribution
             </span>
           </h3>
-
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {categories
               .filter((c) => c.id !== "all")
@@ -809,8 +788,12 @@ const Technologies = () => {
         </motion.div>
       </div>
 
-      {/* CSS for animations */}
+      {/* CSS for animations & scrollbar */}
       <style jsx>{`
+        html,
+        body {
+          overflow-anchor: none;
+        }
         @keyframes pulse {
           0%,
           100% {
