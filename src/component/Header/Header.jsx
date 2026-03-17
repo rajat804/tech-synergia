@@ -25,7 +25,7 @@ import {
   FiX,
   FiArrowRight,
 } from "react-icons/fi";
-
+import Logo from "../../assets/1-removebg.png";
 const Header = () => {
   const location = useLocation();
 
@@ -191,22 +191,21 @@ const Header = () => {
   ];
 
   return (
-    <header ref={headerRef} className="w-full absolute top-0 left-0 z-50 bg-black">
-      <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 py-4">
+    <header
+      ref={headerRef}
+      className="w-full sticky top-0 left-0 z-50 bg-black h-20 flex items-center"
+    >
+      <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 w-full">
         {/* LOGO */}
-
-        <Link to="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
-            TS
-          </div>
-
-          <h1 className="text-white text-xl font-bold">
-            Tech<span className="text-blue-400">Synergia</span>
-          </h1>
+        <Link to="/" className="flex items-center gap-2 w-50">
+          <img
+            src={Logo}
+            alt="TechSynergia Logo"
+            className="h-55 w-full"
+          />
         </Link>
 
         {/* DESKTOP MENU */}
-
         <nav className="hidden lg:flex items-center gap-8 text-gray-300">
           <Link to="/" className="hover:text-white">
             Home
@@ -392,16 +391,32 @@ const Header = () => {
             </div>
           )}
 
-          <Link to="/industries" onClick={closeAllMenus} className="text-white block">
+          <Link
+            to="/industries"
+            onClick={closeAllMenus}
+            className="text-white block"
+          >
             Industries
-          </Link> 
-          <Link to="/portfolio" onClick={closeAllMenus} className="text-white block">
+          </Link>
+          <Link
+            to="/portfolio"
+            onClick={closeAllMenus}
+            className="text-white block"
+          >
             Portfolio
           </Link>
-          <Link to="/about-us" onClick={closeAllMenus} className="text-white block">
+          <Link
+            to="/about-us"
+            onClick={closeAllMenus}
+            className="text-white block"
+          >
             About Us
           </Link>
-          <Link to="/contact" onClick={closeAllMenus} className="text-white block">
+          <Link
+            to="/contact"
+            onClick={closeAllMenus}
+            className="text-white block"
+          >
             Contact
           </Link>
 
