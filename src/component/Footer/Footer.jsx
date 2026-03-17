@@ -255,32 +255,6 @@ const Footer = () => {
             </div>
           </motion.div>
         </motion.div>
-
-        {/* Bottom Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-white/10"
-        >
-          {[
-            { number: "200+", label: "Happy Clients" },
-            { number: "500+", label: "Projects" },
-            { number: "50+", label: "Experts" },
-            { number: "8+", label: "Years Experience" }
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="text-center"
-            >
-              <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                {stat.number}
-              </div>
-              <div className="text-sm text-gray-500 mt-1">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
 
       {/* Copyright Bar */}
