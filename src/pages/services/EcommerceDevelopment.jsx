@@ -36,6 +36,7 @@ import {
   FiMapPin,
   FiSmartphone,
   FiLayout,
+  FiCode,
 } from "react-icons/fi";
 
 import {
@@ -43,6 +44,11 @@ import {
   SiWoocommerce,
   SiBigcommerce,
   SiPrestashop,
+  SiSquarespace,
+  SiWix,
+  SiSalesforce,
+  SiSap,
+  SiShopware,
 } from "react-icons/si";
 
 import { FaMagento, FaOpencart } from "react-icons/fa";
@@ -52,7 +58,6 @@ import ClientTestimonials from "../../component/services/ClientTestimonials";
 
 const EcommerceDevelopment = () => {
   const [activeTab, setActiveTab] = useState("all");
-
 
   const stats = [
     {
@@ -141,6 +146,51 @@ const EcommerceDevelopment = () => {
       color: "from-yellow-500 to-yellow-700",
       bg: "bg-yellow-100",
       textColor: "text-yellow-600",
+    },
+
+    // 🔥 NEW ADDED
+
+    {
+      name: "Squarespace",
+      icon: <SiSquarespace />,
+      color: "from-gray-500 to-gray-700",
+      bg: "bg-gray-100",
+      textColor: "text-gray-600",
+    },
+    {
+      name: "Wix",
+      icon: <SiWix />,
+      color: "from-indigo-500 to-indigo-700",
+      bg: "bg-indigo-100",
+      textColor: "text-indigo-600",
+    },
+    {
+      name: "Salesforce Commerce",
+      icon: <SiSalesforce />,
+      color: "from-blue-400 to-blue-600",
+      bg: "bg-blue-100",
+      textColor: "text-blue-500",
+    },
+    {
+      name: "SAP Commerce",
+      icon: <SiSap />,
+      color: "from-yellow-400 to-yellow-600",
+      bg: "bg-yellow-100",
+      textColor: "text-yellow-600",
+    },
+    {
+      name: "Shopware",
+      icon: <SiShopware />,
+      color: "from-orange-400 to-orange-600",
+      bg: "bg-orange-100",
+      textColor: "text-orange-500",
+    },
+    {
+      name: "Ecwid",
+      icon: <FiCode />,
+      color: "from-green-400 to-green-600",
+      bg: "bg-green-100",
+      textColor: "text-green-500",
     },
   ];
 
@@ -306,7 +356,6 @@ const EcommerceDevelopment = () => {
     },
     { title: "Analytics", icon: <FiBarChart2 />, color: "text-sky-500" },
   ];
-
 
   const filterTabs = [
     { id: "all", name: "All Solutions", icon: "🛍️" },
@@ -539,8 +588,6 @@ const EcommerceDevelopment = () => {
         </motion.div>
       </section>
 
-      
-
       {/* Platforms We Support */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -574,10 +621,12 @@ const EcommerceDevelopment = () => {
                 whileHover={{ scale: 1.1, y: -5 }}
                 className={`${platform.bg} rounded-2xl p-4 sm:p-5 text-center shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group`}
               >
-                <div
+                <div className="flex justify-center">
+                  <div
                   className={`text-3xl sm:text-4xl mb-2 ${platform.textColor} group-hover:scale-110 transition-transform`}
                 >
                   {platform.icon}
+                </div>
                 </div>
                 <div className="text-xs sm:text-sm font-semibold text-gray-700">
                   {platform.name}
