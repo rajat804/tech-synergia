@@ -623,10 +623,10 @@ const EcommerceDevelopment = () => {
               >
                 <div className="flex justify-center">
                   <div
-                  className={`text-3xl sm:text-4xl mb-2 ${platform.textColor} group-hover:scale-110 transition-transform`}
-                >
-                  {platform.icon}
-                </div>
+                    className={`text-3xl sm:text-4xl mb-2 ${platform.textColor} group-hover:scale-110 transition-transform`}
+                  >
+                    {platform.icon}
+                  </div>
                 </div>
                 <div className="text-xs sm:text-sm font-semibold text-gray-700">
                   {platform.name}
