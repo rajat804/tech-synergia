@@ -14,6 +14,9 @@ import ApiDevelopmentIntegration from "../pages/services/ApiDevelopmentIntegrati
 import MaintenanceAndSupport from "../pages/services/MaintenanceAndSupport";
 import SoftwareDevelopmentOutsourcing from "../pages/services/SoftwareDevelopmentOutsourcing";
 import DesktopAppDevelopment from "../pages/services/DesktopAppDevelopment";
+import AccountingSoftware from "../pages/solution/AccountingSoftware";
+import RestaurantPOSSoftware from "../pages/solution/RestaurantPOSSoftware";
+import InventoryManagement from "../pages/solution/InventoryManagement";
 
 const AppRoutes = () => {
   return (
@@ -49,7 +52,18 @@ const AppRoutes = () => {
           path="/destop-app-development"
           element={<DesktopAppDevelopment />}
         />
+
+        {/* Solution */}
+        <Route
+          path={"/accounting-software"}
+          element={<AccountingSoftware />}
+        />
+
+        <Route path="/restaurant-pos-software" element={<RestaurantPOSSoftware />} />
+        <Route path="/inventory-management" element={<InventoryManagement />} />
+
       </Routes>
+
       <Footer />
       <FloatingContact />
     </>
