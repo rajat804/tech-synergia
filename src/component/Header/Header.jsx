@@ -120,19 +120,19 @@ const Header = () => {
       name: "Accounting Software",
       icon: <FiPieChart />,
       color: "from-blue-500 to-indigo-600",
-      path: "/solutions",
+      path: "/accounting-software",
     },
     {
       name: "Restaurant POS Software",
       icon: <FiCoffee />,
       color: "from-orange-500 to-red-500",
-      path: "/solutions",
+      path: "/restaurant-pos-software",
     },
     {
       name: "Inventory Management",
       icon: <FiPackage />,
       color: "from-purple-500 to-pink-500",
-      path: "/solutions",
+      path: "/inventory-management",
     },
     {
       name: "Fleet Management",
