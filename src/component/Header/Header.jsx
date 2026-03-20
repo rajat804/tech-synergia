@@ -168,25 +168,25 @@ const Header = () => {
       name: "Lead Management",
       icon: <FiTarget />,
       color: "from-pink-500 to-red-500",
-      path: "/solutions",
+      path: "/lead-management",
     },
     {
       name: "Operations Management",
       icon: <FiSettings />,
       color: "from-gray-600 to-gray-800",
-      path: "/solutions",
+      path: "/operation-management",
     },
     {
       name: "Kiosk Software",
       icon: <FiMonitor />,
       color: "from-blue-500 to-purple-500",
-      path: "/solutions",
+      path: "/kiosk-software",
     },
     {
       name: "Payment Software",
       icon: <FiCreditCard />,
       color: "from-green-500 to-emerald-600",
-      path: "/solutions",
+      path: "/payment-software",
     },
   ];
 
