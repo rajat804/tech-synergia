@@ -22,6 +22,10 @@ import WarehouseManagement from "../pages/solution/WarehouseManagement";
 import HRManagement from "../pages/solution/HRManagement";
 import FinanceManagement from "../pages/solution/FinanceManagement";
 import SchoolManagement from "../pages/solution/SchoolManagement";
+import LeadManagement from "../pages/solution/LeadManagement";
+import OperationsManagement from "../pages/solution/OperationsManagement";
+import KioskSoftware from "../pages/solution/KioskSoftware";
+import PaymentSoftware from "../pages/solution/PaymentSoftware";
 
 const AppRoutes = () => {
   return (
@@ -71,6 +75,11 @@ const AppRoutes = () => {
         <Route path="/hr-management" element={<HRManagement />} />
         <Route path="/finance-management" element={<FinanceManagement />} />
         <Route path="/school-management" element={<SchoolManagement/>} />
+        <Route path="/lead-management" element={<LeadManagement />} />
+        <Route path="/operation-management" element={<OperationsManagement />} />
+        <Route path="/kiosk-software" element={<KioskSoftware />} />
+        <Route path="/payment-software" element={<PaymentSoftware />} />
+
       </Routes>
 
       <Footer />
