@@ -17,6 +17,11 @@ import DesktopAppDevelopment from "../pages/services/DesktopAppDevelopment";
 import AccountingSoftware from "../pages/solution/AccountingSoftware";
 import RestaurantPOSSoftware from "../pages/solution/RestaurantPOSSoftware";
 import InventoryManagement from "../pages/solution/InventoryManagement";
+import FleetManagement from "../pages/solution/FleetManagement";
+import WarehouseManagement from "../pages/solution/WarehouseManagement";
+import HRManagement from "../pages/solution/HRManagement";
+import FinanceManagement from "../pages/solution/FinanceManagement";
+import SchoolManagement from "../pages/solution/SchoolManagement";
 
 const AppRoutes = () => {
   return (
@@ -61,7 +66,11 @@ const AppRoutes = () => {
 
         <Route path="/restaurant-pos-software" element={<RestaurantPOSSoftware />} />
         <Route path="/inventory-management" element={<InventoryManagement />} />
-
+        <Route path="/fleet-management" element={<FleetManagement />} />
+        <Route path="/warehouse-management" element={<WarehouseManagement />} />
+        <Route path="/hr-management" element={<HRManagement />} />
+        <Route path="/finance-management" element={<FinanceManagement />} />
+        <Route path="/school-management" element={<SchoolManagement/>} />
       </Routes>
 
       <Footer />
