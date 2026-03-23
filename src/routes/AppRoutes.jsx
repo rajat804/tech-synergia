@@ -26,6 +26,9 @@ import LeadManagement from "../pages/solution/LeadManagement";
 import OperationsManagement from "../pages/solution/OperationsManagement";
 import KioskSoftware from "../pages/solution/KioskSoftware";
 import PaymentSoftware from "../pages/solution/PaymentSoftware";
+import Industries from "../pages/Industries";
+import Portfolio from "../pages/Portfolio";
+import Contact from "../pages/Contact";
 
 const AppRoutes = () => {
   return (
@@ -79,6 +82,9 @@ const AppRoutes = () => {
         <Route path="/operation-management" element={<OperationsManagement />} />
         <Route path="/kiosk-software" element={<KioskSoftware />} />
         <Route path="/payment-software" element={<PaymentSoftware />} />
+        <Route path="/industries" element={<Industries />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/contact" element={<Contact />} />
 
       </Routes>
 
