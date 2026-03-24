@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { 
   FiMapPin, 
   FiPhone, 
@@ -20,39 +21,39 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const companyLinks = [
-    { name: "About Us", href: "#" },
-    { name: "Our Services", href: "#" },
-    { name: "Projects", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Contact", href: "#" }
+    { name: "About Us", path: "/about-us" },
+    { name: "Our Services", path: "/services" },
+    { name: "Projects", path: "/portfolio" },
+    { name: "Blog", path: "/blog" },
+    { name: "Careers", path: "/careers" },
+    { name: "Contact", path: "/contact" }
   ];
 
   const serviceLinks = [
-    { name: "Web Development", href: "#" },
-    { name: "Mobile App Development", href: "#" },
-    { name: "E-commerce Development", href: "#" },
-    { name: "Custom Software", href: "#" },
-    { name: "CRM Solutions", href: "#" },
-    { name: "Cloud Services", href: "#" }
+    { name: "Web Development", path: "/website-development" },
+    { name: "Mobile App Development", path: "/mobile-app-development" },
+    { name: "E-commerce Development", path: "/ecommerce-development" },
+    { name: "Custom Software", path: "/custom-software-development" },
+    { name: "CRM Solutions", path: "/erp-crm-solution" },
+    { name: "Cloud Services", path: "/cloud-services" }
   ];
 
   const supportLinks = [
-    { name: "Help Center", href: "#" },
-    { name: "FAQs", href: "#" },
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms of Service", href: "#" },
-    { name: "Cookie Policy", href: "#" },
-    { name: "Sitemap", href: "#" }
+    { name: "Help Center", path: "/help-center" },
+    { name: "FAQs", path: "/faqs" },
+    { name: "Privacy Policy", path: "/privacy-policy" },
+    { name: "Terms of Service", path: "/terms-of-service" },
+    { name: "Cookie Policy", path: "/cookie-policy" },
+    { name: "Sitemap", path: "/sitemap" }
   ];
 
   const socialLinks = [
-    { icon: <FiFacebook />, href: "#", label: "Facebook", color: "hover:bg-blue-600" },
-    { icon: <FiTwitter />, href: "#", label: "Twitter", color: "hover:bg-blue-400" },
-    { icon: <FiLinkedin />, href: "#", label: "LinkedIn", color: "hover:bg-blue-700" },
-    { icon: <FiInstagram />, href: "#", label: "Instagram", color: "hover:bg-pink-600" },
-    { icon: <FiGithub />, href: "#", label: "GitHub", color: "hover:bg-gray-800" },
-    { icon: <FiYoutube />, href: "#", label: "YouTube", color: "hover:bg-red-600" }
+    { icon: <FiFacebook />, href: "https://facebook.com", label: "Facebook", color: "hover:bg-blue-600" },
+    { icon: <FiTwitter />, href: "https://twitter.com", label: "Twitter", color: "hover:bg-blue-400" },
+    { icon: <FiLinkedin />, href: "https://linkedin.com", label: "LinkedIn", color: "hover:bg-blue-700" },
+    { icon: <FiInstagram />, href: "https://instagram.com", label: "Instagram", color: "hover:bg-pink-600" },
+    { icon: <FiGithub />, href: "https://github.com", label: "GitHub", color: "hover:bg-gray-800" },
+    { icon: <FiYoutube />, href: "https://youtube.com", label: "YouTube", color: "hover:bg-red-600" }
   ];
 
   const contactInfo = [
@@ -147,14 +148,14 @@ const Footer = () => {
         >
           {/* Company Info */}
           <motion.div variants={itemVariants} className="space-y-6">
-            <div className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2 group">
               <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">TS</span>
               </div>
-              <span className="text-xl font-bold text-white">
+              <span className="text-xl font-bold text-white group-hover:scale-105 transition-transform">
                 Tech<span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Synergia</span>
               </span>
-            </div>
+            </Link>
             
             <p className="text-gray-400 text-sm leading-relaxed">
               Empowering businesses through innovative technology solutions. We transform ideas into digital reality with cutting-edge expertise.
@@ -184,10 +185,10 @@ const Footer = () => {
                   whileHover={{ x: 5 }}
                   className="text-gray-400 hover:text-white transition-colors duration-300"
                 >
-                  <a href={link.href} className="flex items-center space-x-2">
+                  <Link to={link.path} className="flex items-center space-x-2">
                     <FiArrowRight className="w-3 h-3 text-blue-400" />
                     <span>{link.name}</span>
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -206,10 +207,10 @@ const Footer = () => {
                   whileHover={{ x: 5 }}
                   className="text-gray-400 hover:text-white transition-colors duration-300"
                 >
-                  <a href={link.href} className="flex items-center space-x-2">
+                  <Link to={link.path} className="flex items-center space-x-2">
                     <FiArrowRight className="w-3 h-3 text-purple-400" />
                     <span>{link.name}</span>
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -228,10 +229,10 @@ const Footer = () => {
                   whileHover={{ x: 5 }}
                   className="text-gray-400 hover:text-white transition-colors duration-300"
                 >
-                  <a href={link.href} className="flex items-center space-x-2">
+                  <Link to={link.path} className="flex items-center space-x-2">
                     <FiArrowRight className="w-3 h-3 text-pink-400" />
                     <span>{link.name}</span>
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ul>
@@ -244,6 +245,8 @@ const Footer = () => {
                   <motion.a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -3 }}
                     className={`w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-white transition-all duration-300 ${social.color}`}
                     aria-label={social.label}
@@ -263,8 +266,8 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-gray-500 text-center md:text-left">
               © {currentYear} Tech Synergia. All rights reserved. | 
-              <a href="#" className="hover:text-white transition-colors ml-2">Privacy Policy</a> | 
-              <a href="#" className="hover:text-white transition-colors ml-2">Terms of Service</a>
+              <Link to="/privacy-policy" className="hover:text-white transition-colors ml-2">Privacy Policy</Link> | 
+              <Link to="/terms-of-service" className="hover:text-white transition-colors ml-2">Terms of Service</Link>
             </div>
             
             <div className="flex items-center space-x-2 text-sm text-gray-500">
